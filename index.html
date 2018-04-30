@@ -7,8 +7,19 @@
 </head>
 <body>
 	<h2>Todo</h2>
+	<!-- The behaviour of content under this element will be managed using the TodoListController class defined in todo.js. -->
 	<div ng-controller="TodoListController as todolist">
-		<!-- The behaviour of content under this element will be managed using the TodoListController class defined in todo.js. -->
+	<ul class="unstyled">
+		<li ng-repeat="todo in todolist.todos">
+			<label class="checkbox">
+				<input type="checkbox" ng-model="todo.done">
+				<span class="done-{{todo.done}}">
+					{{todo.text}}
+				</span>	
+			</label>
+		</li>
+	</ul>
+
 	</div>
 
 	<!-- Load AngularJS -->
