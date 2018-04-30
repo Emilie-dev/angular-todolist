@@ -14,6 +14,20 @@ angular.module('todolistApp', [])
 			todoList.todoText = '';
 		};	
 
+		// Add the possibility to see the remained todos.
+		todoList.remaining = function() {
+			var count = 0;
+			angular.forEach(todoList.todos, function(todo) {
+				/*
+				Ternary operator : condition ? expr1 : expr2.
+				If the condition is true the expr1 is displayed. 
+				If not, it's the expr2 which is displayed. 
+				*/
+				count += todo.done ? 0 : 1;
+			});
+			return count;
+		};
+
 		// Archive old todos.
 		todoList.archive =function() {
 			var oldTodos = todoList.todos;

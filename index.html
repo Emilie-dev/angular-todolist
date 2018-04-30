@@ -9,24 +9,25 @@
 	<h2>Todo</h2>
 	<!-- The behaviour of content under this element will be managed using the TodoListController class defined in todo.js. -->
 	<div ng-controller="TodoListController as todoList">
-	<!-- Calls archive() by clicking on it. -->
-	<a href="#" ng-click="todoList.archive()">Archive</a>
-	<ul class="unstyled">
-		<!-- Add new <li> elements in the DOM. -->
-		<li ng-repeat="todo in todoList.todos">
-			<label class="checkbox">
-				<input type="checkbox" ng-model="todo.done">
-				<span class="done-{{todo.done}}">
-					{{todo.text}}
-				</span>	
-			</label>
-		</li>
-	</ul>
-	<!-- Calls addTodo() -->
-	<form ng-submit="todoList.addTodo()">
-		<input type="text" ng-model="todoList.todoText" size="30" placeholder="add a new todo here">
-		<input class="btn-primary" type="submit" value="add">
-	</form>
+		<span>{{todoList.remaining()}} of {{todoList.todos.length}} remaining</span>
+		<!-- Calls archive() by clicking on it. -->
+		[ <a href="#" ng-click="todoList.archive()">Archive</a> ]
+		<ul class="unstyled">
+			<!-- Add new <li> elements in the DOM. -->
+			<li ng-repeat="todo in todoList.todos">
+				<label class="checkbox">
+					<input type="checkbox" ng-model="todo.done">
+					<span class="done-{{todo.done}}">
+						{{todo.text}}
+					</span>	
+				</label>
+			</li>
+		</ul>
+		<!-- Calls addTodo() -->
+		<form ng-submit="todoList.addTodo()">
+			<input type="text" ng-model="todoList.todoText" size="30" placeholder="add a new todo here">
+			<input class="btn-primary" type="submit" value="add">
+		</form>
 	</div>
 
 	<!-- Load AngularJS -->
